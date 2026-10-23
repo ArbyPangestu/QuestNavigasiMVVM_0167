@@ -3,12 +3,8 @@ package com.example.pertemuan6.view
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -25,62 +21,58 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
 import com.example.pertemuan6.R
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
-    OnSubmitBtnClick: () -> Unit
+    jenisK:List<String> = listOf("Laki-laki", "Perempuan"),
+    OnSubmitBtnClick : () -> Unit
 ) {
-    Scaffold(
-        modifier = Modifier,
+    Scaffold(modifier=Modifier,
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.home), color = Color.White) },
+                title = {Text(stringResource(R.string.home), color = Color.White)},
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    colorResource(R.color.teal_700)
-                )
-            )
-        }
+                    colorResource(R.color.teal_700))
+            ) }
     ) { isiRuang ->
-        Column(
-            modifier = Modifier.padding(isiRuang),
+        Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+            horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(
                 value = "",
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
-                label = { Text(text = "Nama Lengkap") },
+                label = { Text(text = "Nama Lengkap")},
                 onValueChange = {},
             )
 
-            HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
-                thickness = Thickness,
-                color = Color.Red
-            )
+            HorizontalDivider(modifier = Modifier
+                .padding(20.dp)
+                .width(250.dp), thickness = Thickness,color = Color.Red)
             Row {
-                jenisK.forEach { item ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                jenisK.forEach {
+                        item ->
+                    Row(verticalAlignment = Alignment.CenterVertically){
                         RadioButton(
                             selected = false,
-                            onClick = { item }
+                            onClick = {item}
                         )
                         Text(text = item)
                     }
                 }
             }
-            HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
+            HorizontalDivider(modifier = Modifier
+                .padding(20.dp)
+                .width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
             )
@@ -89,13 +81,12 @@ fun FormIsian(
                 singleLine = true,
                 modifier = Modifier
                     .width(250.dp),
-                label = { Text(text = "Alamat") },
+                label = {Text(text = "Alamat")},
                 onValueChange = {},
             )
             Spacer(modifier = Modifier.height(30.dp))
             Button(
-                modifier = Modifier
-                    .fillMaxWidth(1f)
+                modifier = Modifier.fillMaxWidth(1f)
                     .padding(all = 25.dp),
                 onClick = OnSubmitBtnClick
             ) {
